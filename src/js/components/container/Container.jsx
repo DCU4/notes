@@ -2,21 +2,30 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 // import Nav from "../presentational/Nav.jsx";
 import Form from "../presentational/Form.jsx";
+import Note from "../presentational/Note.jsx";
 
 
 class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      class: ''
+      class: '',
+      note: '',
+      items: []
     }
   }
 
-  
+  onChange = (event) => {
+    this.setState({note: event.target.value});
+  }
 
-  getWeather = (e) => {
+  writeNote = (e) => {
     e.preventDefault();
     // console.log(e.target.elements.NAME);
+    this.setState({
+      note: '',
+      items: [...this.state.items, this.state.note]
+    });
   
   }
 
@@ -26,13 +35,16 @@ class Container extends Component {
     return (
       
       <main>
-        <h1>Weather App</h1>
+        <h1>Notes</h1>
         <Form 
-          getWeather={this.getWeather}
-          error={this.state.error}
-          class={this.state.class} 
+          writeNote={this.writeNote}
+          note={this.state.note}
+          class={this.state.class}
+          onChange={this.onChange} 
         />
-
+      <Note 
+        items={this.state.items}
+      />
       </main>
     );
   }

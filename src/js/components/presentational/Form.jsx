@@ -10,9 +10,8 @@ export default class Form extends Component {
   render() {
 
     return (
-      <form className={this.props.class} onSubmit={this.props.getWeather}>
-        <input className={this.props.error?'error' : ''} type="text" name="city" placeholder="City"/>
-        <input className={this.props.error?'error' : ''} type="text" name="country" placeholder="Country"/>
+      <form className={this.props.class} onSubmit={this.props.writeNote}>
+        <input value={this.props.note} onChange={this.props.onChange}  />
         <button>Write</button>
       </form>
     );
