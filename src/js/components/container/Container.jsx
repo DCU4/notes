@@ -11,7 +11,8 @@ class Container extends Component {
     this.state = {
       class: '',
       note: '',
-      items: []
+      items: [],
+      apiResponse: ''
     }
   }
 
@@ -26,23 +27,34 @@ class Container extends Component {
       note: '',
       items: [...this.state.items, this.state.note]
     });
-  
-  }
 
+  }
+  callAPI() {
+    fetch("https://47956c8a876449ff83a2f627fa1bd5f2.vfs.cloud9.us-east-1.amazonaws.com/")
+        .then(res => res.text())
+        .then(res => this.setState({ apiResponse: res }),
+        console.log(this.state.apiResponse)
+        );
+    }
+
+componentWillMount() {
+    this.callAPI();
+}
 
   render() {
 
     return (
-      
+
       <main>
         <h1>Notes</h1>
-        <Form 
+        <p>Note:{this.state.apiResponse}</p>
+        <Form
           writeNote={this.writeNote}
           note={this.state.note}
           class={this.state.class}
-          onChange={this.onChange} 
+          onChange={this.onChange}
         />
-      <Note 
+      <Note
         items={this.state.items}
       />
       </main>
