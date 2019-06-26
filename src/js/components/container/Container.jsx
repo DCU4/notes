@@ -30,7 +30,9 @@ class Container extends Component {
 
   }
   callAPI() {
-    fetch("https://47956c8a876449ff83a2f627fa1bd5f2.vfs.cloud9.us-east-1.amazonaws.com/")
+    // let url = "https://47956c8a876449ff83a2f627fa1bd5f2.vfs.cloud9.us-east-1.amazonaws.com/"
+    let url = "http://localhost:8080/posts"
+    fetch(url)
         .then(res => res.text())
         .then(res => this.setState({ apiResponse: res }),
         console.log(this.state.apiResponse)
