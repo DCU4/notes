@@ -36,17 +36,17 @@ app.use(bodyParser.json());
 //   next();
 // });
 
-// Note.create( {
-//     note: 'A test note'
-//     },
-//     function(err,note){
-//         if(err){
-//             console.log(err);
-//         } else {
-//             console.log('yes');
-//             console.log(note);
-//         }
-// });
+Note.create( {
+    note: 'A test note'
+    },
+    function(err,note){
+        if(err){
+            console.log(err);
+        } else {
+            console.log('yes');
+            console.log(note);
+        }
+});
 
 //note list page
 // app.get('/', function(req, res, next){
