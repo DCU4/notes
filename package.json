@@ -1,0 +1,30 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "An app for note taking to replace the regular iOS app",
+  "main": "app.js",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b gh-pages -d dist",
+    "start": "node app.js",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DCU4/notes.git"
+  },
+  "author": "Dylan Connor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DCU4/notes/issues"
+  },
+  "homepage": "https://github.com/DCU4/notes#readme",
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.4.3"
+  }
+}
