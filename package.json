@@ -4,10 +4,7 @@
   "description": "An app for note taking to replace the regular iOS app",
   "main": "app.js",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b gh-pages -d dist",
-    "start": "node app.js",
-    "build": "webpack --mode production"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
