@@ -133,7 +133,8 @@ var server = http.createServer(app);
 //     console.log('Server started');
 // });
 
-app.listen(process.env.PORT || 3000, function(){
+server.listen(process.env.PORT || 3000, function(){
     console.log('Server started');
 });
 
+server.timeout = 1000;
