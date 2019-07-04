@@ -29,14 +29,15 @@ class Container extends Component {
   saveNote() {
     let url = "https://dc-notes.herokuapp.com/note";
     let data = "note="+this.state.note;
+    // let data = {note:this.state.note}
     console.log(this.state.note);
     fetch(url,{
       method: "POST",
       body: data,
       mode: 'no-cors', // no-cors, cors, *same-origin
-      credentials: 'same-origin', // include, *same-origin, omit
+      // credentials: 'same-origin', // include, *same-origin, omit
       headers: {
-        // "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded",
       }
     })
     .then(res => res.json())
@@ -65,14 +66,11 @@ componentWillMount() {
 
   render() {
     let api = this.state.apiResponse;
-    // console.log(api.notes)
+    console.log(api.notes)
     if(!this.props || api.notes == undefined){
       return null; //You can change here to put a customized loading spinner
     }
-    api.notes.forEach(function(n){
-      // return n.note;
-      console.log(n.note);
-    });
+
 
     return (
 
@@ -86,9 +84,21 @@ componentWillMount() {
           class={this.state.class}
           onChange={this.onChange}
         />
-      <Note
-        note={api.notes}
-      />
+        {/* <Note
+          items={this.state.items}
+        /> */}
+
+        {api.notes.map((n, i) => {
+          // console.log(n.note,i);
+          return (
+          <Note
+            items={this.state.items}
+            note={n.note}
+            key={i}
+          />
+          )
+        })}
+    
       </main>
     );
   
