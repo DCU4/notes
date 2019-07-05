@@ -5,15 +5,30 @@
 }
 
 html {
-  font-family: 'Cutive Mono', monospace;
+  font-family: 'Crimson Text', monospace;
   font-size: 18px;
   width:100%;
   height: 100%;
+
+  body {
+    padding: 0 80px;
+    #app {
+      main {
+        font-size: 2em;
+        h1 {
+          font-size: 6em;
+        }
+      }
+    }
+  }
 }
 
-h1 {
-  font-size: 6rem;
-}
+
+
+
+
+
+
 
 @keyframes fade-in-down {
   from {
