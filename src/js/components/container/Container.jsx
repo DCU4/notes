@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 // import Nav from "../presentational/Nav.jsx";
-import Form from "../presentational/Form.jsx";
-import Notes from "../presentational/Notes.jsx";
-import NewNote from "../presentational/NewNote.jsx";
-import SingleNote from "../presentational/SingleNote.jsx";
-import Header from "../presentational/Header.jsx";
+import Form from "../presentational/Form.jsx.js";
+import Notes from "../presentational/Notes.jsx.js";
+import NewNote from "../presentational/NewNote.jsx.js";
+import SingleNote from "../presentational/SingleNote.jsx.js";
+import Header from "../presentational/Header.jsx.js";
 
 
 
