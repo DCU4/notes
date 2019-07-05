@@ -14,7 +14,8 @@ class Container extends Component {
       note: "",
       items: [],
       apiResponse: "",
-      singleNote: false
+      singleNote: false,
+      id: ""
     };
   }
 
@@ -40,7 +41,6 @@ class Container extends Component {
       }
     })
       .then(res => res.json())
-      // .then(res => this.setState({ apiResponse: res })
       .catch(function(error) {
         console.error("Error:", error);
       });
@@ -49,7 +49,6 @@ class Container extends Component {
 
   writeNote = e => {
     e.preventDefault();
-    // console.log(e.target.elements.NAME);
     this.setState({
       note: "",
       items: [...this.state.items, this.state.note]
@@ -63,7 +62,10 @@ class Container extends Component {
   onClick = open => {
     let singleNote = this.state.singleNote;
     let state = singleNote ? false : true;
-    this.setState({ singleNote: state });
+    this.setState({
+      singleNote: state,
+      id: open.target.id
+    });
   };
 
   componentWillMount() {
@@ -73,11 +75,9 @@ class Container extends Component {
   render() {
     let api = this.state.apiResponse;
     let singleNote = this.state.singleNote;
-
     if (!this.props || api.notes == undefined) {
       return null; //You can change here to put a customized loading spinner
     }
-    // console.log(api)
 
     return (
       <main>
@@ -91,18 +91,10 @@ class Container extends Component {
           onChange={this.onChange}
         />
 
-        {/* if you click on one of the Notes, it will render SingleNote 
-which will make the api call for that notes id */}
-
         {!singleNote ? (
           <ul>
-            <NewNote
-              items={this.state.items}
-              // note={n.note}
-              // key={i}
-            />
+            <NewNote items={this.state.items} />
             {api.notes.map((n, i) => {
-              // console.log(n.note,i);
               return (
                 <Notes
                   note={n.note}
@@ -114,9 +106,7 @@ which will make the api call for that notes id */}
             })}
           </ul>
         ) : (
-          api.notes.map((n, i) => {
-            return <SingleNote id={n._id} />;
-          })
+          <SingleNote onClick={this.onClick} id={this.state.id} />
         )}
       </main>
     );

@@ -1,50 +1,56 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
 
 export default class SingleNote extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
-  
+    this.state = {
+      class: "",
+      apiResponse: ""
+    };
   }
-  
-  getSingleNote(){
-    console.log('getting signle note')
-    // let api = this.state.apiResponse;
+
+  getSingleNote() {
     let id = this.props.id;
-    if(!this.props || id == undefined){
+
+    if (!this.props || id == undefined) {
       return null; //You can change here to put a customized loading spinner
     }
-    
-    id.forEach(i => {
-      let url  = "https://dc-notes.herokuapp.com/"+i
-      console.log(url);
-    });
-      
+
+    let url = "https://dc-notes.herokuapp.com/" + id;
     fetch(url)
-        .then(res => res.json())
-        .then(res => this.setState({ apiResponse: res }),
-        // console.log(this.state.apiResponse)
-        );
+		.then(res => res.json())
+		.then(
+			res => {
+				if (this._isMounted) {
+					this.setState({ apiResponse: res });
+				}
+			}
+		);
   }
   componentWillMount() {
+    this._isMounted = true;
     this.getSingleNote();
-}
+  }
+  componentWillUnmount() {
+    this._isMounted = false;
+    this.getSingleNote();
+  }
 
   render() {
-    
-    let note = this.props.note;
-    let id = this.props.id
-    console.log(this.props); 
-    if(!this.props || this.props.note == undefined){
+    let note = this.state.apiResponse;
+
+    if (!this.props || note.notes == undefined) {
       return null; //You can change here to put a customized loading spinner
     }
-    
+    console.log(note.notes);
+    console.log(this.props);
     return (
-      // <ul>
-      <a onClick={this.getSingleNote} href={"/"+id}><li> {note} </li></a>
-
-        // {this.props.items.map((item, index) => <li key={index}>{item}</li>)}
-      // </ul>
+      <ul>
+        <li onClick={this.props.onClick}>All Notes</li>
+        <li> {note.notes.note}</li>
+      </ul>
     );
   }
 }
