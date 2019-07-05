@@ -47,8 +47,8 @@ export default class SingleNote extends Component {
     console.log(note.notes);
     console.log(this.props);
     return (
-      <ul>
-        <li onClick={this.props.onClick}>All Notes</li>
+      <ul className="single-note">
+        
         <li> {note.notes.note}</li>
       </ul>
     );

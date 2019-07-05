@@ -6,17 +6,56 @@
 
 html {
   font-family: 'Crimson Text', monospace;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.25;
   width:100%;
   height: 100%;
 
   body {
-    padding: 0 80px;
+    padding: 0 20px;
+    background: #F2F2F2;
     #app {
       main {
-        font-size: 2em;
-        h1 {
-          font-size: 6em;
+        font-size: 1em;
+        header {
+          padding: 20px 0;
+          ul {
+            list-style: none;
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            li {
+              font-size: 1.5em;
+              color: rgba(0,0,0,0.65);
+            }
+          }
+        }
+        ul {
+          list-style: none;
+          display:flex;
+          flex-direction: column;
+          &.all-notes{
+            li {
+              display:flex;
+              padding: 10px 0;
+              border-top: 2px rgba(69, 67, 67, 0.5) solid;
+              span {
+                width: 50%;
+                font-size: 1em;
+                color: rgba(0,0,0,0.65);
+                &.date {
+                  color: rgba(0,0,0,0.5);
+                }
+              }
+            }
+          }
+          &.single-note{
+            padding: 10px 0;
+            li {
+              font-size: 1.5em;
+              color: rgba(0,0,0,0.65);
+            }
+          }
         }
       }
     }

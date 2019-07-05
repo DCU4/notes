@@ -5,6 +5,9 @@ import Form from "../presentational/Form.jsx";
 import Notes from "../presentational/Notes.jsx";
 import NewNote from "../presentational/NewNote.jsx";
 import SingleNote from "../presentational/SingleNote.jsx";
+import Header from "../presentational/Header.jsx";
+
+
 
 class Container extends Component {
   constructor(props) {
@@ -59,6 +62,7 @@ class Container extends Component {
   onChange = event => {
     this.setState({ note: event.target.value });
   };
+
   onClick = open => {
     let singleNote = this.state.singleNote;
     let state = singleNote ? false : true;
@@ -81,7 +85,12 @@ class Container extends Component {
 
     return (
       <main>
-        <h1>Notes</h1>
+        <header>
+          <Header
+            singleNote={singleNote}
+            onClick={this.onClick}
+          />
+        </header>
 
         <Form
           writeNote={this.writeNote}
@@ -92,12 +101,15 @@ class Container extends Component {
         />
 
         {!singleNote ? (
-          <ul>
+          <ul className="all-notes">
             <NewNote items={this.state.items} />
             {api.notes.map((n, i) => {
+              // let date = n.created.toDateString();
+
               return (
                 <Notes
                   note={n.note}
+                  date={n.created}
                   key={i}
                   id={n._id}
                   onClick={this.onClick}
@@ -106,7 +118,7 @@ class Container extends Component {
             })}
           </ul>
         ) : (
-          <SingleNote onClick={this.onClick} id={this.state.id} />
+          <SingleNote  id={this.state.id} />
         )}
       </main>
     );
