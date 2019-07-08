@@ -16,16 +16,16 @@ html {
     background: #F2F2F2;
     #app {
       main {
-        font-size: 1em;
+        font-size: 4rem;
         header {
-          padding: 20px 0;
+          padding: 40px 20px;
           ul {
             list-style: none;
             display:flex;
             flex-direction: row;
             justify-content: space-between;
             li {
-              font-size: 1.5em;
+              font-size: 1em;
               color: rgba(0,0,0,0.65);
             }
           }
@@ -34,23 +34,34 @@ html {
           list-style: none;
           display:flex;
           flex-direction: column;
+          // font-size:1rem;
           &.all-notes{
             li {
               display:flex;
-              padding: 10px 0;
+              padding: 40px 20px;
               border-top: 2px rgba(69, 67, 67, 0.5) solid;
+              // opacity: 0;
+              opacity: 0;
+              transform: translateY(-15px);
+              transition: all .3s ease-in;
+              &.all-notes-reveal{
+                // animation: fade-in-down .5s ease-in .2s forwards;
+                opacity: 1;
+                transform: translateY(0);
+              }
               span {
                 width: 50%;
                 font-size: 1em;
                 color: rgba(0,0,0,0.65);
                 &.date {
                   color: rgba(0,0,0,0.5);
+                  font-size: .85em;
                 }
               }
             }
           }
           &.single-note{
-            padding: 10px 0;
+            padding: 20px 0;
             li {
               font-size: 1.5em;
               color: rgba(0,0,0,0.65);

@@ -20,13 +20,17 @@ class Container extends Component {
       singleNote: false,
       id: ""
     };
+    this.addClasses = this.addClasses.bind(this);
   }
 
   getNotes() {
     let url = "https://dc-notes.herokuapp.com/";
     fetch(url)
       .then(res => res.json())
-      .then(res => this.setState({ apiResponse: res }));
+      .then(res => this.setState({ apiResponse: res})
+      // (this.addClasses())
+    );
+    // this.addClasses();
   }
 
   saveNote() {
@@ -72,8 +76,33 @@ class Container extends Component {
     });
   };
 
+  addClasses (){
+    console.log('functuinal called')
+    let api = this.state.apiResponse;
+    console.log(api);
+    if (!this.props || api.notes == undefined) {
+      return null; //You can change here to put a customized loading spinner
+    }
+
+    // api.notes.map((n,i) =>
+      // console.log(n),
+      // setTimeout(() =>
+        this.setState({ class: "all-notes-reveal" })
+    // )
+
+  }
+
   componentWillMount() {
     this.getNotes();
+    // this.addClasses();
+    // this.addClasses();
+    // setTimeout(this.addClasses(), i * 5)
+    // setTimeout(this.addClasses(), i * 5)
+    console.log('mounted')
+  }
+
+  componentDidMount() {
+    window.addEventListener('load',this.addClasses);
   }
 
   render() {
@@ -105,7 +134,8 @@ class Container extends Component {
             <NewNote items={this.state.items} />
             {api.notes.map((n, i) => {
               // let date = n.created.toDateString();
-
+              // setTimeout(this.addClasses(), i * 5)
+              // console.log(n);
               return (
                 <Notes
                   note={n.note}
@@ -113,6 +143,9 @@ class Container extends Component {
                   key={i}
                   id={n._id}
                   onClick={this.onClick}
+                  add={this.addClasses}
+                  class={this.state.class}
+
                 />
               );
             })}
