@@ -100,6 +100,7 @@ class Container extends Component {
             singleNote={singleNote}
             onClick={this.onClick}
             addNote={this.addNote}
+            addNoteState={addNote}
           />
         </header>
 

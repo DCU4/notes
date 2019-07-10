@@ -9,7 +9,7 @@ export default class Header extends Component {
   render() {
     // let note = this.state.apiResponse;
     let singleNote = this.props.singleNote;
-    // let addNote = this.props.addNote;
+    let addNoteState = this.props.addNoteState;
     // if (!this.props || note.notes == undefined) {
     //   return null; //You can change here to put a customized loading spinner
     // }
@@ -20,7 +20,14 @@ export default class Header extends Component {
 
           {singleNote ? (
             <ul>
-              <li onClick={this.props.onClick}>All Notes</li>
+              {!addNoteState ? (
+                <li onClick={this.props.onClick}>All Notes</li>
+              ) : (
+                <form>
+                  <button onClick={this.props.onClick} form="addNote">Testing</button>
+                </form>
+              )}
+
             </ul>
           ) : (
             <ul>
