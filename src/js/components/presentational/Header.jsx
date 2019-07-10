@@ -14,7 +14,7 @@ export default class Header extends Component {
     //   return null; //You can change here to put a customized loading spinner
     // }
     // console.log(note.notes);
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <nav>
 

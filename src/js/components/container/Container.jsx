@@ -52,14 +52,14 @@ class Container extends Component {
     this.setState({
       singleNote: state,
       addNote: false,
-      id: open.target.id
+      id: open.currentTarget.id
     });
   };
 
   addClasses (){
     console.log('functuinal called')
     let api = this.state.apiResponse;
-    console.log(api);
+    // console.log(api);
     if (!this.props || api.notes == undefined) {
       return null; //You can change here to put a customized loading spinner
     }

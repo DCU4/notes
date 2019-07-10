@@ -8,20 +8,20 @@ export default class Notes extends Component {
   render() {
     let note = this.props.note;
     let className = this.props.class;
-    console.log(className);
+    // console.log(className);
     let id = this.props.id;
     let date = this.props.date;
     let d = new Date(date).toDateString()
-    let truncate = (input) => input.length > 15 ? `${input.substring(0, 15)}...` : input;
+    let truncate = (input) => input.length > 15 ? `${input.substring(0, 10)}...` : input;
 
     if (!this.props || this.props.note == undefined) {
       return null; //You can change here to put a customized loading spinner
     }
 
     return (
-      <li className={"note "+className} onClick={this.props.onClick}>
+      <li id={id} className={"note "+className} onClick={this.props.onClick}>
         <span className="date">{d}</span>
-        <span id={id}>{truncate(note)}</span>
+        <span >{truncate(note)}</span>
       </li>
     );
   }

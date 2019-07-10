@@ -44,11 +44,11 @@ export default class SingleNote extends Component {
     if (!this.props || note.notes == undefined) {
       return null; //You can change here to put a customized loading spinner
     }
-    console.log(note.notes);
-    console.log(this.props);
+    // console.log(note.notes);
+    // console.log(this.props);
     return (
       <ul className="single-note">
-        
+
         <li> {note.notes.note}</li>
       </ul>
     );
