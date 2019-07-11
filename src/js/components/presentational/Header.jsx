@@ -19,7 +19,7 @@ export default class Header extends Component {
                 <li onClick={this.props.onClick}>All Notes</li>
               ) : (
                 <form>
-                  <button form="addNote">Testing</button>
+                  <button form="addNote">All Notes</button>
                 </form>
               )}
 
