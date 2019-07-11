@@ -11,9 +11,7 @@ export default class Form extends Component {
 
     return (
       <form id="addNote" className={this.props.class} onSubmit={this.props.writeNote}>
-        {/* <input value={this.props.note} onChange={this.props.onChange}  /> */}
         <textarea value={this.props.note} onChange={this.props.onChange}></textarea>
-        {/* <button>Write</button> */}
       </form>
     );
   }
