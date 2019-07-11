@@ -7,15 +7,13 @@ import NewNote from "../presentational/NewNote.jsx";
 import SingleNote from "../presentational/SingleNote.jsx";
 import Header from "../presentational/Header.jsx";
 
-
-
 class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
       class: "",
-      // note: "",
-      // items: [],
+      note: "",
+      items: [],
       apiResponse: "",
       singleNote: false,
       id: "",
@@ -23,6 +21,43 @@ class Container extends Component {
     };
     this.addClasses = this.addClasses.bind(this);
   }
+
+  saveNote() {
+    let url = "https://dc-notes.herokuapp.com/note";
+    let data = "note=" + this.state.note;
+    // let data = {note:this.state.note}
+    // console.log(this.state.note);
+    fetch(url, {
+      method: "POST",
+      body: data,
+      mode: "no-cors", // no-cors, cors, *same-origin
+      // credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    })
+      .then(res => res.json())
+      .catch(function(error) {
+        console.error("Error:", error);
+      });
+    // console.log(this.state.apiResponse);
+  }
+
+  writeNote = e => {
+    e.preventDefault();
+    this.setState({
+      note: "",
+      items: [...this.state.items, this.state.note],
+      addNote: false,
+      singleNote:false
+    });
+    this.saveNote();
+  };
+
+
+  onChange = event => {
+    this.setState({ note: event.target.value });
+  };
 
   getNotes() {
     let url = "https://dc-notes.herokuapp.com/";
@@ -85,6 +120,10 @@ class Container extends Component {
     window.addEventListener('load',this.addClasses);
   }
 
+  componentWillUpdate(){
+    this.getNotes();
+  }
+
   render() {
     let api = this.state.apiResponse;
     let singleNote = this.state.singleNote;
@@ -107,7 +146,6 @@ class Container extends Component {
 
         {!singleNote ? (
           <ul className="all-notes">
-
             {api.notes.map((n, i) => {
               // let date = n.created.toDateString();
               // setTimeout(this.addClasses(), i * 5)
@@ -133,7 +171,14 @@ class Container extends Component {
 
           />
           ) : (
-          <NewNote items={this.state.items} />
+          <NewNote
+            items={this.state.items}
+            writeNote={this.writeNote}
+            saveNote={this.saveNote}
+            note={this.state.note}
+            addNote={addNote}
+            onChange={this.onChange}
+          />
           )
         )}
       </main>
