@@ -8,6 +8,7 @@ import SingleNote from "../presentational/SingleNote.jsx";
 import Header from "../presentational/Header.jsx";
 
 class Container extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
@@ -52,6 +53,7 @@ class Container extends Component {
       singleNote:false
     });
     this.saveNote();
+    this.getNotes();
   };
 
 
@@ -62,12 +64,12 @@ class Container extends Component {
   getNotes() {
     let url = "https://dc-notes.herokuapp.com/";
     fetch(url)
-      .then(res => res.json())
-      .then(res => this.setState({ apiResponse: res})
-      // (this.addClasses())
-    );
-    // this.addClasses();
-  }
+    .then(res => res.json())
+    .then(res => {
+      if (this._isMounted) {
+      this.setState({ apiResponse: res });
+    }}
+  )};
 
   addNote = n => {
     let singleNote = this.state.singleNote;
@@ -109,6 +111,7 @@ class Container extends Component {
 
   componentWillMount() {
     this.getNotes();
+    this._isMounted = true;
     // this.addClasses();
     // this.addClasses();
     // setTimeout(this.addClasses(), i * 5)
@@ -120,8 +123,9 @@ class Container extends Component {
     window.addEventListener('load',this.addClasses);
   }
 
-  componentWillUpdate(){
-    this.getNotes();
+  componentWillUnmount() {
+    // this.getNotes();
+    this._isMounted = false;
   }
 
   render() {
@@ -135,6 +139,7 @@ class Container extends Component {
     return (
       <main>
         <header>
+
           <Header
             singleNote={singleNote}
             onClick={this.onClick}
@@ -147,9 +152,6 @@ class Container extends Component {
         {!singleNote ? (
           <ul className="all-notes">
             {api.notes.map((n, i) => {
-              // let date = n.created.toDateString();
-              // setTimeout(this.addClasses(), i * 5)
-              // console.log(n);
               return (
                 <Notes
                   note={n.note}
