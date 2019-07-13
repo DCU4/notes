@@ -40,16 +40,18 @@ export default class SingleNote extends Component {
 
   render() {
     let note = this.state.apiResponse;
-
     if (!this.props || note.notes == undefined) {
       return null; //You can change here to put a customized loading spinner
     }
     // console.log(note.notes);
-    // console.log(this.props);
+    let day = new Date(note.notes.created).getDate();
+    let month = new Date(note.notes.created).getMonth();
+    let year = new Date(note.notes.created).getFullYear();
     return (
       <ul className="single-note">
+        <li className="date">{month}-{day}-{year}</li>
+        <li> {(note.notes.note.split(/\r?\n/))}</li>
 
-        <li> {note.notes.note}</li>
       </ul>
     );
   }

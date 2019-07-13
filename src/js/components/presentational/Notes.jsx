@@ -11,7 +11,7 @@ export default class Notes extends Component {
     // console.log(className);
     let id = this.props.id;
     let date = this.props.date;
-    let d = new Date(date).toDateString()
+    let d = new Date(date).toDateString();
     let truncate = (input) => input.length > 15 ? `${input.substring(0, 10)}...` : input;
 
     if (!this.props || this.props.note == undefined) {

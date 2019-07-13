@@ -73,8 +73,12 @@ html {
           &.single-note{
             padding: 20px;
             li {
-              font-size: 1.5em;
+              font-size: 1em;
               color: rgba(0,0,0,0.65);
+              overflow-wrap: break-word;
+              &.date {
+                margin-bottom:20px;
+              }
             }
             form {
               textarea {
