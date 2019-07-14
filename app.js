@@ -2,7 +2,8 @@ var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     cors = require('cors'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    methodOverride = require('method-override');
 
 
 
@@ -13,7 +14,7 @@ mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(cors());
-
+app.use(methodOverride('_method'));
 
 
 
@@ -115,6 +116,20 @@ app.get('/', cors(), function (req, res, next) {
 
 });
 
+
+//edit route
+app.get('/:id/edit', function(req,res) {
+  Note.findById(req.params.id, function (err, foundNote) {
+    if (err) {
+        console.log(err);
+    } else {
+        // res.render('single',{notes:foundNote});
+        res.send({ notes: foundNote });
+    }
+});
+})
+
+//update route
 
 var http = require("http");
 
