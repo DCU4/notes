@@ -51,13 +51,16 @@ html {
               display:flex;
               padding: 40px 20px;
               border-top: 2px rgba(69, 67, 67, 0.5) solid;
-              opacity: 1;
-              transform: translateY(-15px);
-              transition: all .3s ease-in;
+              opacity: 0;
+              // transform: translateY(-15px);
+              // transition: all .3s ease-in;
+
               &.all-notes-reveal{
-                // animation: fade-in-down .5s ease-in .2s forwards;
-                opacity: 1;
-                transform: translateY(0);
+                animation: fade-in-down .5s ease-in forwards;
+                animation-delay: .2s;
+
+                // opacity: 1;
+                // transform: translateY(0);
               }
               span {
                 width: 50%;

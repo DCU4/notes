@@ -5,6 +5,20 @@ export default class Notes extends Component {
     super(props);
   }
 
+  delay = del => {
+    let note = this.props.note;
+    let i = this.props.i;
+    console.log(i)
+    // for(let j = 0; j <i.)
+    window.addEventListener('load',this.props.add);
+
+  }
+  componentDidMount() {
+    // window.addEventListener('load',this.props.add);
+    this.delay();
+  }
+
+
   render() {
     let note = this.props.note;
     let className = this.props.class;
@@ -13,6 +27,7 @@ export default class Notes extends Component {
     let date = this.props.date;
     let d = new Date(date).toDateString();
     let truncate = (input) => input.length > 15 ? `${input.substring(0, 10)}...` : input;
+    // let delay = (input) =>
 
     if (!this.props || this.props.note == undefined) {
       return null; //You can change here to put a customized loading spinner

@@ -119,9 +119,6 @@ class Container extends Component {
     console.log('mounted')
   }
 
-  componentDidMount() {
-    window.addEventListener('load',this.addClasses);
-  }
 
   componentWillUnmount() {
     // this.getNotes();
