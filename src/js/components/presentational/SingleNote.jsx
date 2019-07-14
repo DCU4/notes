@@ -29,6 +29,26 @@ export default class SingleNote extends Component {
 			}
 		);
   }
+
+  // editNote () {
+  //   let id = this.props.id;
+
+  //   if (!this.props || id == undefined) {
+  //     return null; //You can change here to put a customized loading spinner
+  //   }
+
+  //   let url = "https://dc-notes.herokuapp.com/" + id +"/edit";
+  //   fetch(url)
+	// 	.then(res => res.json())
+	// 	.then(
+	// 		res => {
+	// 			if (this._isMounted) {
+	// 				this.setState({ apiResponse: res });
+	// 			}
+	// 		}
+	// 	);
+  // }
+
   componentWillMount() {
     this._isMounted = true;
     this.getSingleNote();
