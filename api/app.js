@@ -131,6 +131,17 @@ app.get('/:id/edit', function(req,res) {
 
 //update route
 
+app.get('/:id', function(req,res) {
+  Note.findByIdAndUpdate(req.params.id, function (err, foundNote) {
+    if (err) {
+        console.log(err);
+    } else {
+        // res.render('single',{notes:foundNote});
+        res.send({ notes: foundNote });
+    }
+});
+})
+
 var http = require("http");
 
 var port = "8080";
