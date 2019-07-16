@@ -5,17 +5,20 @@ export default class Notes extends Component {
     super(props);
   }
 
-  delay = del => {
-    let note = this.props.note;
-    let i = this.props.i;
-    console.log(i)
-    // for(let j = 0; j <i.)
-    window.addEventListener('load',this.props.add);
+  // delay = del => {
+  //   let n = document.querySelectorAll('.note');
+  //   console.log(n);
 
-  }
+  //   for(let i = 0; i < n.length; i++) {
+  //     // let del = i*0.5;
+  //     // console.log(del);
+
+  //   }
+  // }
   componentDidMount() {
     // window.addEventListener('load',this.props.add);
-    this.delay();
+    // this.delay()
+
   }
 
 
@@ -34,7 +37,7 @@ export default class Notes extends Component {
     }
 
     return (
-      <li id={id} className={"note "+className} onClick={this.props.onClick}>
+      <li id={id} className={"note "+className} onClick={this.props.onClick} >
         <span className="date">{d}</span>
         <span >{truncate(note)}</span>
       </li>

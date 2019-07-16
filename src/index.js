@@ -1,3 +1,3 @@
-import Container from "./js/components/container/Container.jsx";
+import Container from "./js/components/container/Folder.jsx";
 import './styles/style.scss';
 // import './svg/sun.svg';

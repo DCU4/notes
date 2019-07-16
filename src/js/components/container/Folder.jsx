@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ReactDOM from "react-dom";
+import ReactDOM from "react-dom";
 // import Nav from "../presentational/Nav.jsx";
 // import Form from "../presentational/Form.jsx";
 import Notes from "../presentational/Notes.jsx";
@@ -14,7 +14,6 @@ class Folder extends Component {
     this.state = {
       class: "",
       note: "",
-      items: [],
       apiResponse: "",
       singleNote: false,
       id: "",
@@ -26,8 +25,7 @@ class Folder extends Component {
   saveNote() {
     let url = "https://dc-notes.herokuapp.com/note";
     let data = "note=" + this.state.note;
-    // let data = {note:this.state.note}
-    // console.log(this.state.note);
+
     fetch(url, {
       method: "POST",
       body: data,
@@ -95,33 +93,16 @@ class Folder extends Component {
 
   addClasses (){
     console.log('functuinal called')
-    let api = this.state.apiResponse;
-    // console.log(api);
-    if (!this.props || api.notes == undefined) {
-      return null; //You can change here to put a customized loading spinner
-    }
-
-    // api.notes.map((n,i) =>
-      // console.log(n),
-      // setTimeout(() =>
-        this.setState({ class: "all-notes-reveal" })
-    // )
-
+    this.setState({ class: "all-notes-reveal" })
   }
 
   componentWillMount() {
     this.getNotes();
+    this.addClasses();
     this._isMounted = true;
-    // this.addClasses();
-    // this.addClasses();
-    // setTimeout(this.addClasses(), i * 5)
-    // setTimeout(this.addClasses(), i * 5)
-    console.log('mounted')
   }
 
-
   componentWillUnmount() {
-    // this.getNotes();
     this._isMounted = false;
   }
 
@@ -156,7 +137,6 @@ class Folder extends Component {
                   key={i}
                   id={n._id}
                   onClick={this.onClick}
-                  add={this.addClasses}
                   class={this.state.class}
 
                 />
@@ -171,7 +151,6 @@ class Folder extends Component {
           />
           ) : (
           <NewNote
-            items={this.state.items}
             writeNote={this.writeNote}
             saveNote={this.saveNote}
             note={this.state.note}
@@ -186,5 +165,5 @@ class Folder extends Component {
 }
 export default Folder;
 
-// const wrapper = document.getElementById("app");
-// wrapper ? ReactDOM.render(<Folder />, wrapper) : false;
+const wrapper = document.getElementById("app");
+wrapper ? ReactDOM.render(<Folder />, wrapper) : false;

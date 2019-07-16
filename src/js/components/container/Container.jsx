@@ -30,5 +30,5 @@ class Container extends Component {
 }
 export default Container;
 
-const wrapper = document.getElementById("app");
-wrapper ? ReactDOM.render(<Container />, wrapper) : false;
+// const wrapper = document.getElementById("app");
+// wrapper ? ReactDOM.render(<Container />, wrapper) : false;

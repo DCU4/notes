@@ -8,7 +8,6 @@ export default class SingleNote extends Component {
     this.state = {
       class: "",
       apiResponse: "",
-      items: [],
       addNote: this.props.addNote
     };
   }
