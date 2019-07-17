@@ -46,7 +46,7 @@ class Folder extends Component {
     e.preventDefault();
     this.setState({
       note: "",
-      items: [...this.state.items, this.state.note],
+      // items: [...this.state.items, this.state.note],
       addNote: false,
       singleNote:false
     });

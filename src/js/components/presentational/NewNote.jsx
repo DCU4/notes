@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "../presentational/Form.jsx";
 
-export default class SingleNote extends Component {
+export default class NewNote extends Component {
 
   constructor(props) {
     super(props);
