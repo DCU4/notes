@@ -46,6 +46,7 @@ export default class SingleNote extends Component {
       .catch(function(error) {
         console.error("Error:", error);
       });
+      console.log('edited note');
   }
 
   componentWillMount() {

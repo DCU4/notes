@@ -108,7 +108,7 @@ app.get('/', cors(), function (req, res, next) {
             // res.render('/',{notes: allNotes });
             res.send({ notes: allNotes });
             // res.send('sending data from server');
-            console.log(allNotes);
+            // console.log(allNotes);
             // console.log(req.user.username);
 
         }
