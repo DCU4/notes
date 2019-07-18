@@ -5,21 +5,29 @@ export default class Notes extends Component {
     super(props);
   }
 
-  // delay = del => {
-  //   let n = document.querySelectorAll('.note');
-  //   console.log(n);
+  deleteNote = del => {
 
-  //   for(let i = 0; i < n.length; i++) {
-  //     // let del = i*0.5;
-  //     // console.log(del);
+    let id = this.props.id;
+    if (!this.props || id == undefined) {
+      return null; //You can change here to put a customized loading spinner
+    }
 
-  //   }
-  // }
-  componentDidMount() {
-    // window.addEventListener('load',this.props.add);
-    // this.delay()
-
+    let url = "https://dc-notes.herokuapp.com/" + id + "/?_method=DELETE";
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors", // no-cors, cors, *same-origin
+      // credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    })
+    .then(res => res.json())
+    .catch(function(error) {
+      console.error("Error:", error);
+    });
+    this.props.getNotes;
   }
+
 
 
   render() {
@@ -37,10 +45,14 @@ export default class Notes extends Component {
     }
 
     return (
-      <li id={id} className={"note "+className} onClick={this.props.onClick} >
-        <span className="date">{d}</span>
-        <span >{truncate(note)}</span>
+      <li className={"note "+className}>
+        <p id={id}  onClick={this.props.onClick} >
+          <span className="date">{d}</span>
+          <span >{truncate(note)}</span>
+        </p>
+      <span onClick={this.deleteNote}>DELETE</span>
       </li>
+
     );
   }
 }

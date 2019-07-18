@@ -80,6 +80,8 @@ class Folder extends Component {
     });
   }
 
+
+
   onClick = open => {
     let singleNote = this.state.singleNote;
     let state = singleNote ? false : true;
@@ -137,8 +139,10 @@ class Folder extends Component {
                   id={n._id}
                   onClick={this.onClick}
                   class={this.state.class}
-
+                  deleteNote={this.deleteNote}
+                  getNotes={this.getNotes}
                 />
+
               );
             }).reverse()}
           </ul>

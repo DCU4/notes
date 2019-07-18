@@ -52,26 +52,24 @@ html {
               padding: 40px 20px;
               border-top: 2px rgba(69, 67, 67, 0.5) solid;
               opacity: 0;
-              // transform: translateY(-15px);
-              // transition: all .3s ease-in;
 
               &.all-notes-reveal{
                 animation: fade-in-down .5s ease-in forwards;
                 // animation-delay: .2s;
-
-
-                // opacity: 1;
-                // transform: translateY(0);
               }
-              span {
-                width: 50%;
-                font-size: 1em;
-                color: rgba(0,0,0,0.65);
-                &.date {
-                  color: rgba(0,0,0,0.5);
-                  font-size: .85em;
+              p {
+                display:flex;
+                span {
+                  width: 50%;
+                  font-size: 1em;
+                  color: rgba(0,0,0,0.65);
+                  &.date {
+                    color: rgba(0,0,0,0.5);
+                    font-size: .85em;
+                  }
                 }
               }
+
             }
           }
           &.single-note{
