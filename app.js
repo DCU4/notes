@@ -117,20 +117,7 @@ app.get('/', cors(), function (req, res, next) {
 });
 
 
-//edit route
-// app.get('/:id/edit', function(req,res) {
-//   Note.findById(req.params.id, function (err, foundNote) {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         // res.render('single',{notes:foundNote});
-//         res.send({ notes: foundNote });
-//     }
-// });
-// })
-
 //update route
-
 app.put('/:id', function(req,res) {
   var editedNote = { note: req.body.note };
   Note.findByIdAndUpdate(req.params.id, editedNote, function (err, updatedNote) {
@@ -140,7 +127,17 @@ app.put('/:id', function(req,res) {
         // res.render('single',{notes:foundNote});
         res.send({ notes: updatedNote });
     }
-});
+  });
+})
+
+
+//DESTROY route
+app.delete('/:id', function(req,res) {
+  Note.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+        console.log(err);
+    }
+  });
 })
 
 var http = require("http");
