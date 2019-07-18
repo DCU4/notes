@@ -46,7 +46,6 @@ class Folder extends Component {
     e.preventDefault();
     this.setState({
       note: "",
-      // items: [...this.state.items, this.state.note],
       addNote: false,
       singleNote:false
     });
@@ -147,7 +146,8 @@ class Folder extends Component {
           !addNote ? (
           <SingleNote
             id={this.state.id}
-
+            note={this.state.note}
+            onChange={this.onChange}
           />
           ) : (
           <NewNote

@@ -30,9 +30,15 @@ export default class SingleNote extends Component {
 		);
   }
 
-  editNote () {
+  editNote = e => {
+    // e.preventDefault();
+    let id = this.props.id;
 
+    if (!this.props || id == undefined) {
+      return null; //You can change here to put a customized loading spinner
+    }
     let url = "https://dc-notes.herokuapp.com/" + id + "/?_method=PUT";
+    let data = "note="+this.props.note;
     fetch(url, {
       method: "POST",
       body: data,
@@ -60,6 +66,7 @@ export default class SingleNote extends Component {
 
   render() {
     let note = this.state.apiResponse;
+    let oldNote = this.props.note;
     if (!this.props || note.notes == undefined) {
       return null; //You can change here to put a customized loading spinner
     }
@@ -70,12 +77,9 @@ export default class SingleNote extends Component {
     return (
       <ul className="single-note">
         <li className="date">{month}-{day}-{year}</li>
-        {/* <li> {(note.notes.note.split(/\r?\n/))}</li> */}
-        <form id="editNote" onSubmit={this.editNote}>
-          <textarea defaultValue={(note.notes.note.split(/\r?\n/))}/>
-          <button></button>
+        <form id="editNote" onSubmit={oldNote !== "" ? this.editNote : null}>
+          <textarea defaultValue={(note.notes.note.split(/\r?\n/))} onChange={this.props.onChange}/>
         </form>
-
       </ul>
     );
   }

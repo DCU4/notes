@@ -16,7 +16,9 @@ export default class Header extends Component {
           {singleNote ? (
             <ul>
               {!addNoteState ? (
-                <li onClick={this.props.onClick}>All Notes</li>
+                <form >
+                  <button form="editNote">All Notes</button>
+                </form>
               ) : (
                 <form>
                   <button form="addNote">All Notes</button>
