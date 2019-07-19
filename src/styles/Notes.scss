@@ -17,7 +17,8 @@ ul.all-notes {
     position: relative;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-align: start;
+    scroll-snap-align: touch;
+    white-space: nowrap;
     -webkit-overflow-scrolling: auto;
     scroll-behavior: smooth;
     -ms-overflow-style: none;  // IE 10+
