@@ -15,7 +15,8 @@ ul.all-notes {
     border-top: 2px rgba(69, 67, 67, 0.5) solid;
     
     position: relative;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-align: start;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
