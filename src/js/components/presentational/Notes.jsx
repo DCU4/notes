@@ -3,6 +3,10 @@ import React, { Component } from "react";
 export default class Notes extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      delete: false,
+      class: ""
+    }
   }
 
   deleteNote = del => {
@@ -24,10 +28,21 @@ export default class Notes extends Component {
     .then(res => res.json())
     .catch(function(error) {
       console.error("Error:", error);
-    });
-    this.props.getNotes;
+    }).then(this.setState({
+      delete: !this.state.delete ? true : false
+    }));
+    
   }
 
+  onSubmit = (e) => {
+    this.deleteNote();
+    this.props.getNotes();
+  }
+
+  onTouchMove = e => {
+    //if the right is over 50% showing than add this
+    this.setState({ class: "delete-reveal" })
+  }
 
 
   render() {
@@ -45,12 +60,14 @@ export default class Notes extends Component {
     }
 
     return (
-      <li className={"note "+className}>
+      <li className={this.state.class+" note "} onTouchMove={this.onTouchMove}>
         <p id={id}  onClick={this.props.onClick} >
           <span className="date">{d}</span>
           <span >{truncate(note)}</span>
         </p>
-      <span onClick={this.deleteNote}>DELETE</span>
+        <form onSubmit={this.onSubmit}>
+          <button>X</button>
+        </form>
       </li>
 
     );

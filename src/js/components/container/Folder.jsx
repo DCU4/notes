@@ -129,7 +129,7 @@ class Folder extends Component {
 
 
         {!singleNote ? (
-          <ul className="all-notes">
+          <ul className={"all-notes "+this.state.class}>
             {api.notes.map((n, i) => {
               return (
                 <Notes
