@@ -56,10 +56,22 @@ export default class SingleNote extends Component {
   }
 
   //add classes in componentWillMount, remove in unmount
+  addClasses (){
+    setTimeout(() => {
+      this.setState({ class:'slide-in'})
+    }, 100)
+  }
+
+  removeClasses() {
+    setTimeout(() => {
+      this.setState({ class:'slide-out'})
+    }, 100)
+  }
 
   componentWillMount() {
     this._isMounted = true;
     this.getSingleNote();
+    // this.addClasses();
   }
   componentWillUnmount() {
     this._isMounted = false;
@@ -77,7 +89,7 @@ export default class SingleNote extends Component {
     let month = new Date(note.notes.created).getMonth();
     let year = new Date(note.notes.created).getFullYear();
     return (
-      <ul className="single-note slide-in">
+      <ul className={`single-note ${this.state.class}`}>
         <li className="date">{month}-{day}-{year}</li>
         <form id="editNote" onSubmit={oldNote !== "" ? this.editNote : null}>
           <textarea defaultValue={(note.notes.note.split(/\r?\n/))} onChange={this.props.onChange}/>
