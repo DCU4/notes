@@ -122,7 +122,6 @@ class Folder extends Component {
 
     return (
       <main>
-        <header>
 
           <Header
             singleNote={singleNote}
@@ -131,7 +130,6 @@ class Folder extends Component {
             addNoteState={addNote}
             note={this.state.note}
           />
-        </header>
 
 
         {!singleNote ? (

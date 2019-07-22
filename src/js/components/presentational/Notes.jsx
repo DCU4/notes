@@ -31,7 +31,7 @@ export default class Notes extends Component {
     }).then(this.setState({
       delete: !this.state.delete ? true : false
     }));
-    
+
   }
 
   onSubmit = (e) => {
@@ -41,7 +41,17 @@ export default class Notes extends Component {
 
   onTouchMove = e => {
     //if the right is over 50% showing than add this
-    this.setState({ class: "delete-reveal" })
+
+    let sL = e.currentTarget.scrollLeft;
+    console.log( sL) ;
+
+    // if n.x > 375, add class to change the right
+    if (sL ==188){
+      // this.setState({ class: "delete-reveal" })
+      e.currentTarget.scrollLeft = 0;
+    } else {
+      e.currentTarget.scrollLeft = 188;
+    }
   }
 
 
