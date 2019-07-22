@@ -145,7 +145,6 @@ class Folder extends Component {
                   id={n._id}
                   onClick={this.onClick}
                   class={this.state.class}
-                  deleteNote={this.deleteNote}
                   getNotes={this.getNotes}
                 />
 
