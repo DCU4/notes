@@ -46,12 +46,12 @@ export default class Notes extends Component {
     console.log( sL) ;
 
     // if n.x > 375, add class to change the right
-    if (sL ==188){
-      // this.setState({ class: "delete-reveal" })
-      e.currentTarget.scrollLeft = 0;
-    } else {
-      e.currentTarget.scrollLeft = 188;
-    }
+    // if (sL ==188){
+    //   // this.setState({ class: "delete-reveal" })
+    //   e.currentTarget.scrollLeft = 0;
+    // } else {
+    //   e.currentTarget.scrollLeft = 188;
+    // }
   }
 
 
