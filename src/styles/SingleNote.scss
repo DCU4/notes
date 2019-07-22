@@ -4,6 +4,9 @@ ul.single-note {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  &.slide-in {
+    animation: slide-out 0.3s ease-in reverse;
+  }
   li {
     font-size: 1em;
     color: rgba(0, 0, 0, 0.65);

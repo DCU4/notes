@@ -55,6 +55,8 @@ export default class SingleNote extends Component {
       console.log('edited note');
   }
 
+  //add classes in componentWillMount, remove in unmount
+
   componentWillMount() {
     this._isMounted = true;
     this.getSingleNote();
@@ -75,7 +77,7 @@ export default class SingleNote extends Component {
     let month = new Date(note.notes.created).getMonth();
     let year = new Date(note.notes.created).getFullYear();
     return (
-      <ul className="single-note">
+      <ul className="single-note slide-in">
         <li className="date">{month}-{day}-{year}</li>
         <form id="editNote" onSubmit={oldNote !== "" ? this.editNote : null}>
           <textarea defaultValue={(note.notes.note.split(/\r?\n/))} onChange={this.props.onChange}/>

@@ -97,6 +97,10 @@ class Folder extends Component {
     this.setState({ class: "all-notes-reveal" })
   }
 
+  slideOut = () => {
+    this.setState({class:"slide-out"})
+  }
+
   componentWillMount() {
     this.getNotes();
     this.addClasses();
@@ -105,6 +109,7 @@ class Folder extends Component {
 
   componentWillUnmount() {
     this._isMounted = false;
+    this.slideOut();
   }
 
   render() {
@@ -124,12 +129,13 @@ class Folder extends Component {
             onClick={this.onClick}
             addNote={this.addNote}
             addNoteState={addNote}
+            note={this.state.note}
           />
         </header>
 
 
         {!singleNote ? (
-          <ul className={"all-notes "+this.state.class}>
+          <ul className={`all-notes ${this.state.class}`}>
             {api.notes.map((n, i) => {
               return (
                 <Notes

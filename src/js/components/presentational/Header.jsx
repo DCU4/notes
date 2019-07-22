@@ -9,6 +9,7 @@ export default class Header extends Component {
   render() {
     let singleNote = this.props.singleNote;
     let addNoteState = this.props.addNoteState;
+    let noteState = this.props.note;
 
     return (
       <nav>
@@ -17,7 +18,7 @@ export default class Header extends Component {
             <ul>
               {!addNoteState ? (
                 <form >
-                  <button form="editNote">All Notes</button>
+                  {noteState!== "" ? <button form="editNote">All Notes</button> : <p onClick={this.props.onClick}>All Notes</p>}
                 </form>
               ) : (
                 <form>

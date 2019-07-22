@@ -19,7 +19,7 @@ html {
     #app {
       main {
         font-size: 4rem;
-        
+
       }
     }
   }
@@ -59,6 +59,19 @@ html {
     opacity: 1;
   }
 }
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-15px)
+  }
+}
+
 
 // @for $i from 1 through 100 {
 //   .all-notes-reveal:nth-child(#{$i}){
