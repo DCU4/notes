@@ -101,15 +101,17 @@ class Folder extends Component {
     this.setState({class:"slide-out"})
   }
 
+
+
   componentWillMount() {
     this.getNotes();
-    this.addClasses();
+    // this.addClasses();
     this._isMounted = true;
   }
 
   componentWillUnmount() {
     this._isMounted = false;
-    this.slideOut();
+    // this.slideOut();
   }
 
   render() {
@@ -144,6 +146,7 @@ class Folder extends Component {
                   onClick={this.onClick}
                   class={this.state.class}
                   getNotes={this.getNotes}
+                  singleNote={singleNote}
                 />
 
               );
@@ -155,6 +158,7 @@ class Folder extends Component {
             id={this.state.id}
             note={this.state.note}
             onChange={this.onChange}
+            singleNote={singleNote}
           />
           ) : (
           <NewNote
