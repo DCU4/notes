@@ -9,7 +9,7 @@ export default class Header extends Component {
   onScroll = (e) => {
     let header = document.querySelector('header');
     let st = window.pageYOffset || document.documentElement.scrollTop;
-    console.log(window.pageYOffset, document.documentElement.scrollTop);
+    // console.log(window.pageYOffset, document.documentElement.scrollTop);
     // let bounding = window.getBoundingClientRect();
 
     // console.log(st);
@@ -36,7 +36,7 @@ export default class Header extends Component {
     let noteState = this.props.note;
 
     return (
-      <header >
+      <header>
         <nav>
 
         {singleNote ? (

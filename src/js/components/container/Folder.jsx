@@ -101,6 +101,10 @@ class Folder extends Component {
     this.setState({class:"slide-out"})
   }
 
+  handleTouchEnd = (h) => {
+    let header = document.querySelector('header');
+    header.classList.remove('scroll');
+  }
 
 
   componentWillMount() {
@@ -135,7 +139,7 @@ class Folder extends Component {
 
 
         {!singleNote ? (
-          <ul className={`all-notes ${this.state.class}`}>
+          <ul  onTouchEnd={this.handleTouchEnd} className={`all-notes ${this.state.class}`}>
             {api.notes.map((n, i) => {
               return (
                 <Notes
