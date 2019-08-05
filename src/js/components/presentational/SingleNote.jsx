@@ -56,22 +56,10 @@ export default class SingleNote extends Component {
       console.log('edited note');
   }
 
-  // //add classes in componentWillMount, remove in unmount
-  // addClasses (){
-  //   setTimeout(() => {
-  //     this.setState({ class:'slide-in'})
-  //   }, 100)
-  // }
-
-  // removeClasses() {
-  //   setTimeout(() => {
-  //     this.setState({ class:'slide-out'})
-  //   }, 100)
-  // }
-
-
-  componentWillMount() {
+  componentDidMount() {
     this._isMounted = true;
+    let header = document.querySelector('header');
+    header.classList.remove('scroll');
     this.getSingleNote();
     // this.addClasses();
   }
@@ -84,7 +72,7 @@ export default class SingleNote extends Component {
     let note = this.state.apiResponse;
     let oldNote = this.props.note;
     if (!this.props || note.notes == undefined) {
-      return null; //You can change here to put a customized loading spinner
+      return null;
     }
     // console.log(note.notes);
     let day = new Date(note.notes.created).getDate();

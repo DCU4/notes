@@ -85,11 +85,26 @@ class Folder extends Component {
   onClick = open => {
     let singleNote = this.state.singleNote;
     let state = singleNote ? false : true;
+    let header = document.querySelector('header');
+    header.classList.add('scroll');
+    let allNotes = document.querySelector('.all-notes');
+    if(allNotes){
+      allNotes.classList.add('slide-out-left');
+    }
+
+    let note = document.querySelector('.single-note');
+    if(note){
+      note.classList.add('slide-left');
+    }
+
     this.setState({
-      singleNote: state,
-      addNote: false,
       id: open.currentTarget.id
     });
+    setTimeout(() =>
+    this.setState({
+      singleNote: state,
+      addNote: false
+    }),200);
   };
 
   addClasses (){
@@ -107,15 +122,13 @@ class Folder extends Component {
   }
 
 
-  componentWillMount() {
+  componentDidMount() {
     this.getNotes();
-    // this.addClasses();
     this._isMounted = true;
   }
 
   componentWillUnmount() {
     this._isMounted = false;
-    // this.slideOut();
   }
 
   render() {

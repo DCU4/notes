@@ -54,6 +54,11 @@ export default class Notes extends Component {
     // }
   }
 
+  componentDidMount() {
+    let header = document.querySelector('header');
+    header.classList.remove('scroll');
+  }
+
   render() {
     let note = this.props.note;
     let className = this.props.class;

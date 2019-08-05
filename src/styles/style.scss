@@ -59,7 +59,19 @@ html {
   }
 }
 
-@keyframes slide-out {
+@keyframes slide-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(15px)
+  }
+}
+
+@keyframes slide-out-left {
   from {
     opacity: 1;
     transform: translateX(0);
@@ -71,6 +83,17 @@ html {
   }
 }
 
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0px)
+  }
+}
 
 // @for $i from 1 through 100 {
 //   .all-notes-reveal:nth-child(#{$i}){
