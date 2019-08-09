@@ -83,7 +83,7 @@ export default class SingleNote extends Component {
       <ul className={`single-note ${this.state.class}`} >
         <li className="date">{month}-{day}-{year}</li>
         <form id="editNote" onSubmit={oldNote !== "" ? this.editNote : null}>
-          <textarea defaultValue={(note.notes.note.split(/\r?\n/))} onChange={this.props.onChange}/>
+          <textarea defaultValue={(note.notes.note)} onChange={this.props.onChange}/>
         </form>
       </ul>
     );
