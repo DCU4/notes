@@ -8,8 +8,8 @@ var express = require("express"),
 
 
 // mongoose.connect('mongodb://localhost:27017/notes', { useNewUrlParser: true });
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
-
+const uri = 'mongodb+srv://heroku_q8qbdq15:2ummouuftcavkhki82id2q4klm@cluster-q8qbdq15.7me1i.mongodb.net/heroku_q8qbdq15?retryWrites=true&w=majority'
+mongoose.connect(uri,{ useNewUrlParser: true });
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -133,6 +133,7 @@ app.put('/:id', function(req,res) {
 
 //DESTROY route
 app.delete('/:id', function(req,res) {
+    // console.log(req);
   Note.findByIdAndRemove(req.params.id, function (err) {
     if (err) {
         console.log(err);
@@ -158,7 +159,7 @@ var server = http.createServer(app);
 // });
 
 server.listen(process.env.PORT || 3000, function(){
-    console.log('Server started');
+    // console.log('Server started');
 });
 
 server.timeout = 1000;

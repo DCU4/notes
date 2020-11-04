@@ -23,6 +23,7 @@ class Folder extends Component {
   }
 
   saveNote() {
+    // let url = 'https://localhost:3000/note';
     let url = "https://dc-notes.herokuapp.com/note";
     let data = "note=" + this.state.note;
 
@@ -59,8 +60,10 @@ class Folder extends Component {
   };
 
   getNotes() {
+    // let url = 'http://localhost:3000';
     let url = "https://dc-notes.herokuapp.com/";
     fetch(url)
+    // .then(res=>console.lot())
     .then(res => res.json())
     .then(res => {
       if (this._isMounted) {
