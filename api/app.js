@@ -8,8 +8,8 @@ var express = require("express"),
 
 
 // mongoose.connect('mongodb://localhost:27017/notes', { useNewUrlParser: true });
-const uri = 'mongodb+srv://heroku_q8qbdq15:2ummouuftcavkhki82id2q4klm@cluster-q8qbdq15.7me1i.mongodb.net/heroku_q8qbdq15?retryWrites=true&w=majority'
-mongoose.connect(uri,{ useNewUrlParser: true });
+const uri = 'mongodb+srv://heroku_q8qbdq15:2ummouuftcavkhki82id2q4klm@cluster-q8qbdq15.7me1i.mongodb.net/heroku_q8qbdq15?retryWrites=true&w=majority';
+mongoose.connect(uri, { useNewUrlParser: true });
 
 
 
