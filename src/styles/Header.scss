@@ -1,5 +1,17 @@
 header {
-    padding: 40px 20px;
+  padding: 40px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f2f2f2;
+  box-shadow: 0 1px 10px rgba(154, 160, 185, 0.25), 0 3px 15px rgba(66, 86, 68, 0.45);
+  transform: translateY(0);
+  transition: all 0.5s;
+  &.scroll {
+    // position: relative;
+    transform: translateY(-160px);
+    // top:-160px;
+  }
     ul {
       list-style: none;
       display:flex;
@@ -11,7 +23,7 @@ header {
       }
     }
     form {
-      button {
+      button, p {
         font-size: 1em;
         color: rgba(0,0,0,0.65);
         font-family: 'Crimson Text', serif;

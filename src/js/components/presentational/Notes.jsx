@@ -5,7 +5,7 @@ export default class Notes extends Component {
     super(props);
     this.state = {
       delete: false,
-      class: ""
+      class: "",
     }
   }
 
@@ -31,7 +31,7 @@ export default class Notes extends Component {
     }).then(this.setState({
       delete: !this.state.delete ? true : false
     }));
-    
+
   }
 
   onSubmit = (e) => {
@@ -41,9 +41,23 @@ export default class Notes extends Component {
 
   onTouchMove = e => {
     //if the right is over 50% showing than add this
-    this.setState({ class: "delete-reveal" })
+
+    let sL = e.currentTarget.scrollLeft;
+    // console.log( sL) ;
+
+    // if n.x > 375, add class to change the right
+    // if (sL ==188){
+    //   // this.setState({ class: "delete-reveal" })
+    //   e.currentTarget.scrollLeft = 0;
+    // } else {
+    //   e.currentTarget.scrollLeft = 188;
+    // }
   }
 
+  componentDidMount() {
+    let header = document.querySelector('header');
+    header.classList.remove('scroll');
+  }
 
   render() {
     let note = this.props.note;
@@ -59,17 +73,21 @@ export default class Notes extends Component {
       return null; //You can change here to put a customized loading spinner
     }
 
-    return (
-      <li className={this.state.class+" note "} onTouchMove={this.onTouchMove}>
-        <p id={id}  onClick={this.props.onClick} >
-          <span className="date">{d}</span>
-          <span >{truncate(note)}</span>
-        </p>
-        <form onSubmit={this.onSubmit}>
-          <button>X</button>
-        </form>
-      </li>
 
-    );
+      return (
+        !this.state.delete &&
+        <li className={this.state.class+" note "} onTouchMove={this.onTouchMove} onTransitionEnd={this.transitionEnd}>
+          <p id={id}  onClick={this.props.onClick} >
+            <span className="date">{d}</span>
+            <span >{truncate(note)}</span>
+          </p>
+          <form onSubmit={this.onSubmit}>
+            <button>X</button>
+          </form>
+        </li>
+
+      )
+
+
   }
 }

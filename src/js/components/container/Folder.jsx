@@ -88,11 +88,26 @@ class Folder extends Component {
   onClick = open => {
     let singleNote = this.state.singleNote;
     let state = singleNote ? false : true;
+    let header = document.querySelector('header');
+    header.classList.add('scroll');
+    let allNotes = document.querySelector('.all-notes');
+    if(allNotes){
+      allNotes.classList.add('slide-out-left');
+    }
+
+    let note = document.querySelector('.single-note');
+    if(note){
+      note.classList.add('slide-left');
+    }
+
     this.setState({
-      singleNote: state,
-      addNote: false,
       id: open.currentTarget.id
     });
+    setTimeout(() =>
+    this.setState({
+      singleNote: state,
+      addNote: false
+    }),200);
   };
 
   addClasses (){
@@ -100,9 +115,18 @@ class Folder extends Component {
     this.setState({ class: "all-notes-reveal" })
   }
 
-  componentWillMount() {
+  slideOut = () => {
+    this.setState({class:"slide-out"})
+  }
+
+  handleTouchEnd = (h) => {
+    let header = document.querySelector('header');
+    header.classList.remove('scroll');
+  }
+
+
+  componentDidMount() {
     this.getNotes();
-    this.addClasses();
     this._isMounted = true;
   }
 
@@ -120,19 +144,18 @@ class Folder extends Component {
 
     return (
       <main>
-        <header>
 
           <Header
             singleNote={singleNote}
             onClick={this.onClick}
             addNote={this.addNote}
             addNoteState={addNote}
+            note={this.state.note}
           />
-        </header>
 
 
         {!singleNote ? (
-          <ul className={"all-notes "+this.state.class}>
+          <ul  onTouchEnd={this.handleTouchEnd} className={`all-notes ${this.state.class}`}>
             {api.notes.map((n, i) => {
               return (
                 <Notes
@@ -142,8 +165,8 @@ class Folder extends Component {
                   id={n._id}
                   onClick={this.onClick}
                   class={this.state.class}
-                  deleteNote={this.deleteNote}
                   getNotes={this.getNotes}
+                  singleNote={singleNote}
                 />
 
               );
@@ -155,6 +178,7 @@ class Folder extends Component {
             id={this.state.id}
             note={this.state.note}
             onChange={this.onChange}
+            singleNote={singleNote}
           />
           ) : (
           <NewNote
