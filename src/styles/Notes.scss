@@ -3,17 +3,21 @@ ul.all-notes {
   list-style: none;
   display: flex;
   flex-direction: column;
-  opacity: 0;
+  // opacity: 0;
+  padding: 0 20px;
   &.all-notes-reveal {
     animation: fade-in-down 0.5s ease-in forwards;
     // animation-delay: .2s;
   }
-  scroll-snap-type: x mandatory;  
+  &.slide-out-left {
+    animation: slide-out-left 0.15s ease-out forwards;
+  }
+  scroll-snap-type: x mandatory;
   li.note {
     display: flex;
     padding: 40px 20px;
-    border-top: 2px rgba(69, 67, 67, 0.5) solid;
-    
+    border-bottom: 2px rgba(69, 67, 67, 0.5) solid;
+
     position: relative;
     overflow-x: auto;
     overflow-y: hidden;
@@ -23,7 +27,7 @@ ul.all-notes {
     scroll-behavior: smooth;
     -ms-overflow-style: none;  // IE 10+
     scrollbar-width: none;  // Firefox
-    &::-webkit-scrollbar { 
+    &::-webkit-scrollbar {
       display: none;  // Safari and Chrome
     }
 
@@ -45,8 +49,9 @@ ul.all-notes {
       position: absolute;
       right: -20%;
       top: 0;
+
       button {
-        background: #c10f0f;;
+        background: #c10f0f;
         border: none;
         color: white;
         font-size: 1em;

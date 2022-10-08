@@ -7,7 +7,8 @@ export default class SingleNote extends Component {
     super(props);
     this.state = {
       class: "",
-      apiResponse: ""
+      apiResponse: "",
+
     };
   }
 
@@ -57,9 +58,12 @@ export default class SingleNote extends Component {
       console.log('edited note');
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._isMounted = true;
+    let header = document.querySelector('header');
+    header.classList.remove('scroll');
     this.getSingleNote();
+    // this.addClasses();
   }
   componentWillUnmount() {
     this._isMounted = false;
@@ -70,17 +74,18 @@ export default class SingleNote extends Component {
     let note = this.state.apiResponse;
     let oldNote = this.props.note;
     if (!this.props || note.notes == undefined) {
-      return null; //You can change here to put a customized loading spinner
+      return null;
     }
     // console.log(note.notes);
     let day = new Date(note.notes.created).getDate();
     let month = new Date(note.notes.created).getMonth();
     let year = new Date(note.notes.created).getFullYear();
     return (
-      <ul className="single-note">
+      this.props.singleNote &&
+      <ul className={`single-note ${this.state.class}`} >
         <li className="date">{month}-{day}-{year}</li>
         <form id="editNote" onSubmit={oldNote !== "" ? this.editNote : null}>
-          <textarea defaultValue={(note.notes.note.split(/\r?\n/))} onChange={this.props.onChange}/>
+          <textarea defaultValue={(note.notes.note)} onChange={this.props.onChange}/>
         </form>
       </ul>
     );
