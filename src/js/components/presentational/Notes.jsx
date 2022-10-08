@@ -16,7 +16,7 @@ export default class Notes extends Component {
       return null; //You can change here to put a customized loading spinner
     }
     // let url = 'https://localhost:8080' + id + "/?_method=DELETE";
-    let url = "https://dc-notes.herokuapp.com/" + id + "/?_method=DELETE";
+    let url = "http://147.182.186.208/" + id + "/?_method=DELETE";
     fetch(url, {
       method: "POST",
       mode: "no-cors", // no-cors, cors, *same-origin

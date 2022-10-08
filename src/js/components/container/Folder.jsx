@@ -24,7 +24,7 @@ class Folder extends Component {
 
   saveNote() {
     // let url = 'https://localhost:3000/note';
-    let url = "https://dc-notes.herokuapp.com/note";
+    let url = "http://147.182.186.208/note";
     let data = "note=" + this.state.note;
 
     fetch(url, {
@@ -61,7 +61,7 @@ class Folder extends Component {
 
   getNotes() {
     // let url = 'http://localhost:3000';
-    let url = "https://dc-notes.herokuapp.com/";
+    let url = "http://147.182.186.208/";
     fetch(url)
     // .then(res=>console.lot())
     .then(res => res.json())
