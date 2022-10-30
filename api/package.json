@@ -2,9 +2,9 @@
   "name": "notes-app",
   "version": "1.0.0",
   "description": "An app for note taking to replace the regular iOS app",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

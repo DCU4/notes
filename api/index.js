@@ -8,7 +8,13 @@ var express = require("express"),
 
 
 // mongoose.connect('mongodb://localhost:27017/notes', { useNewUrlParser: true });
-const uri = 'mongodb+srv://heroku_q8qbdq15:2ummouuftcavkhki82id2q4klm@cluster-q8qbdq15.7me1i.mongodb.net/heroku_q8qbdq15?retryWrites=true&w=majority';
+let credentials;
+if (fs.existsSync('./credentials.json')) {
+  credentials = require('./credentials.json');
+}
+const DB_NAME = process.env.DB_NAME ? process.env.DB_NAME : credentials.DB_NAME;
+const DB_PW = process.env.DB_PW ? process.env.DB_PW : credentials.DB_PW;
+const uri = `mongodb+srv://${DB_NAME}:${DB_PW}@cluster-q8qbdq15.7me1i.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
 mongoose.connect(uri, { useNewUrlParser: true });
 
 
