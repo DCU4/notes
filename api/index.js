@@ -1,6 +1,5 @@
 var express = require("express"),
     app = express(),
-    bodyParser = require("body-parser"),
     cors = require('cors'),
     mongoose = require('mongoose'),
     methodOverride = require('method-override');
@@ -34,8 +33,8 @@ var noteSchema = new mongoose.Schema({
 
 var Note = mongoose.model('Note', noteSchema);
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 
 
