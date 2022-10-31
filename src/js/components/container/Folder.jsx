@@ -24,7 +24,7 @@ class Folder extends Component {
 
   saveNote() {
     // let url = 'https://localhost:3000/note';
-    let url = "http://147.182.186.208/note";
+    let url = "https://notes-api-five.vercel.app/note";
     let data = "note=" + this.state.note;
 
     fetch(url, {
@@ -61,7 +61,7 @@ class Folder extends Component {
 
   getNotes() {
     // let url = 'http://localhost:3000';
-    let url = "http://147.182.186.208/";
+    let url = "https://notes-api-five.vercel.app/";
     fetch(url)
     // .then(res=>console.lot())
     .then(res => res.json())
